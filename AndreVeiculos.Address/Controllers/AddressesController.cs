@@ -11,6 +11,7 @@ using Repositories;
 using System.Net;
 using AndreVeiculos.Address.DTO;
 using AndreVeiculos.Address.PostalCodeServices;
+using AndreVeiculos.Address.MongoServices;
 
 namespace AndreVeiculos.Address.Controllers
 {
@@ -55,6 +56,7 @@ namespace AndreVeiculos.Address.Controllers
                 return BadRequest("CEP inválido");
 
             var repository = GetRepository<Models.Address>(repositoryType);
+            var mongoRepository = HttpContext.RequestServices.GetRequiredService<AddressService>();
 
             var address = new Models.Address()
             {
@@ -69,6 +71,7 @@ namespace AndreVeiculos.Address.Controllers
             };
 
             await repository.Insert(address);
+            mongoRepository.Insert(address);
 
             return address;
         }

@@ -5,8 +5,6 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreVeiculos.Payment", "AndreVeiculos\AndreVeiculos.Payment.csproj", "{7D7DD65E-E600-4A49-AE5E-5E5283228A75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "..\..\garagem-5by5\AndreVeiculos\Models\Models.csproj", "{6C6F6BE1-993F-4390-8477-15945C1AAD66}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{30FFC633-935A-4095-A8C5-3387A9B31E4A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreVeiculos.Car", "AndreVeiculos.Car\AndreVeiculos.Car.csproj", "{3DF5919A-1516-480C-91EA-6B41ECB09765}"
@@ -25,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreVeiculos.Purchase", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreVeiculos.Sale", "AndreVeiculos.Sale\AndreVeiculos.Sale.csproj", "{ADE07ED9-9FEC-4A9F-BA88-3D4A157C22C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{39FD4621-236F-433D-BE53-544646413BFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{39FD4621-236F-433D-BE53-544646413BFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{3E191097-3254-4EAC-81F7-253AEFC9EB1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		{7D7DD65E-E600-4A49-AE5E-5E5283228A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D7DD65E-E600-4A49-AE5E-5E5283228A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D7DD65E-E600-4A49-AE5E-5E5283228A75}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C6F6BE1-993F-4390-8477-15945C1AAD66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C6F6BE1-993F-4390-8477-15945C1AAD66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C6F6BE1-993F-4390-8477-15945C1AAD66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C6F6BE1-993F-4390-8477-15945C1AAD66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30FFC633-935A-4095-A8C5-3387A9B31E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30FFC633-935A-4095-A8C5-3387A9B31E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30FFC633-935A-4095-A8C5-3387A9B31E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{39FD4621-236F-433D-BE53-544646413BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39FD4621-236F-433D-BE53-544646413BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39FD4621-236F-433D-BE53-544646413BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E191097-3254-4EAC-81F7-253AEFC9EB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E191097-3254-4EAC-81F7-253AEFC9EB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E191097-3254-4EAC-81F7-253AEFC9EB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E191097-3254-4EAC-81F7-253AEFC9EB1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
