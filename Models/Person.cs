@@ -17,7 +17,6 @@ namespace Models
         public string Email { get; set; }
 
         [Column("address_id")]
-        [ForeignKey("address_id")]
         public Address Address { get; set; }
     }
 }

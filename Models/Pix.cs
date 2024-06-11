@@ -9,7 +9,7 @@ namespace Models
         [AutoIncrement]
         [Key]
         public int Id { get; set; }
-        [Column("pix_type_id")]
+        [Column("type_id")]
         public PixType Type { get; set; }
         public string PixKey { get; set; }
     }

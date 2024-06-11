@@ -71,6 +71,9 @@ namespace AndreVeiculos.Client.Migrations
                     b.Property<string>("IdentificationNumber")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("AddressId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
@@ -93,12 +96,9 @@ namespace AndreVeiculos.Client.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("address_id")
-                        .HasColumnType("int");
-
                     b.HasKey("IdentificationNumber");
 
-                    b.HasIndex("address_id");
+                    b.HasIndex("AddressId");
 
                     b.ToTable("Client");
                 });
@@ -107,7 +107,7 @@ namespace AndreVeiculos.Client.Migrations
                 {
                     b.HasOne("Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("address_id")
+                        .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -9,7 +9,7 @@ namespace Repositories
 {
     public class DapperRepository<T> : IBaseRepository<T> where T : Model, new()
     {
-        private string ConnectionString = "Server=127.0.0.1;Database=db_andre_veiculos_dapper_api;TrustServerCertificate=Yes;User Id=sa;Password=SqlServer2019!";
+        private string ConnectionString = "Server=127.0.0.1;Database=db_andre_veiculos_api;TrustServerCertificate=Yes;User Id=sa;Password=SqlServer2019!";
         private SqlConnection _connection;
 
         public DapperRepository()

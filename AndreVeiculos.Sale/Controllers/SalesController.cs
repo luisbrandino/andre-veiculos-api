@@ -26,7 +26,8 @@ namespace AndreVeiculos.Sale.Controllers
         public async Task<ActionResult<IEnumerable<Models.Sale>>> GetSale(string repositoryType)
         {
             var repository = GetRepository<Models.Sale>(repositoryType);
-            var paymentRepository = GetRepository<Models.Payment>(repositoryType);
+            var paymentRepository = GetRepository<Payment>(repositoryType);
+            var addressRepository = GetRepository<Address>(repositoryType);
 
             var sales =  (await repository.FindWith(
                 sale => sale.Client,
@@ -36,11 +37,16 @@ namespace AndreVeiculos.Sale.Controllers
             )).ToList();
 
             foreach (var sale in sales)
+            {
                 sale.Payment = await paymentRepository.FindWith(sale.Payment.Id,
-                    payment => payment.Card, 
+                    payment => payment.Card,
                     payment => payment.PaymentSlip,
                     payment => payment.Pix
                 ) ?? new Payment();
+
+                sale.Client.Address = await addressRepository.Find(sale.Client.Address.Id);
+                sale.Employee.Address = await addressRepository.Find(sale.Employee.Address.Id);
+            }
 
             return sales;
         }
@@ -61,12 +67,17 @@ namespace AndreVeiculos.Sale.Controllers
                 return NotFound();
 
             var paymentRepository = GetRepository<Models.Payment>(repositoryType);
+            var addressRepository = GetRepository<Address>(repositoryType);
 
             sale.Payment = await paymentRepository.FindWith(sale.Payment.Id,
                     payment => payment.Card,
                     payment => payment.PaymentSlip,
                     payment => payment.Pix
                 ) ?? new Payment();
+
+
+            sale.Client.Address = await addressRepository.Find(sale.Client.Address.Id);
+            sale.Employee.Address = await addressRepository.Find(sale.Employee.Address.Id);
 
             return sale;
         }

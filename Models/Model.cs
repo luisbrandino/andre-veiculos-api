@@ -21,6 +21,22 @@ namespace Models
         }
     }
 
+    public class PascalCaseStrategy : IAttributeMappingStrategy
+    {
+        public string Map(string attributeName)
+        {
+            string[] words = attributeName.Split(new char[] { ' ', '\t', '\n', '_' }, StringSplitOptions.RemoveEmptyEntries);
+
+            string pascalCase = "";
+            foreach (string word in words)
+            {
+                pascalCase += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower();
+            }
+
+            return pascalCase;
+        }
+    }
+
     public class PrimaryKeyAttribute : Attribute { }
 
     public class AutoIncrementAttribute : Attribute { }
@@ -47,12 +63,12 @@ namespace Models
 
     public abstract class Model
     {
-        private static IAttributeMappingStrategy _mappingStrategy = new SnakeCaseStrategy();
+        private static IAttributeMappingStrategy _mappingStrategy = new PascalCaseStrategy();
 
         public string Table() => Table(this);
         public static string Table(Model model)
         {
-            string? tableName = model.GetType().GetCustomAttribute<TableAttribute>()?.Name;
+            string? tableName = _mappingStrategy.Map(model.GetType().GetCustomAttribute<TableAttribute>()?.Name.Replace("tb_", ""));
 
             if (tableName == null)
                 throw new InvalidOperationException($"Classe concreta de '{typeof(Model)}' precisa ter 'TableAttribute'");

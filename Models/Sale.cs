@@ -13,10 +13,10 @@ namespace Models
         [Column("car_license_plate")]
         public Car Car { get; set; }
 
-        [Column("client_id")]
+        [Column("client_identification_number")]
         public Client Client { get; set; }
 
-        [Column("employee_id")]
+        [Column("employee_identification_number")]
         public Employee Employee { get; set; }
 
         [Column("payment_id")]
