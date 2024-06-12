@@ -27,7 +27,7 @@ namespace AndreVeiculos.Address.Controllers
         }
 
         [HttpGet("{repositoryType}")]
-        public async Task<ActionResult<IEnumerable<Models.Address>>> GetCar(string repositoryType)
+        public async Task<ActionResult<IEnumerable<Models.Address>>> GetAddress(string repositoryType)
         {
             var repository = GetRepository<Models.Address>(repositoryType);
 
@@ -35,7 +35,7 @@ namespace AndreVeiculos.Address.Controllers
         }
 
         [HttpGet("{repositoryType}/{id}")]
-        public async Task<ActionResult<Models.Address>> GetCar(string repositoryType, int id)
+        public async Task<ActionResult<Models.Address>> GetAddress(string repositoryType, int id)
         {
             var repository = GetRepository<Models.Address>(repositoryType);
             var address = await repository.Find(id);
@@ -47,7 +47,7 @@ namespace AndreVeiculos.Address.Controllers
         }
 
         [HttpPost("{repositoryType}")]
-        public async Task<ActionResult<Models.Address>> PostCar(string repositoryType, AddressDTO addressDTO)
+        public async Task<ActionResult<Models.Address>> PostAddress(string repositoryType, AddressDTO addressDTO)
         {
             IPostalCodeService postalCodeService = new ViaCepService();
             IAddressResult? result = await postalCodeService.Fetch(addressDTO.PostalCode);

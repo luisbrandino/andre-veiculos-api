@@ -13,11 +13,13 @@ namespace MongoServices
             var database = client.GetDatabase(settings.DatabaseName);
             _termsOfUse = database.GetCollection<TermsOfUse>(settings.TermsOfUseCollectionName);
         }
+
         public void Insert(TermsOfUse termsOfUse)
         {
             if (termsOfUse != null)
                 _termsOfUse.InsertOne(termsOfUse);
         }
+
         public TermsOfUse? Find(string id)
         {
             if (!ObjectId.TryParse(id, out _))
