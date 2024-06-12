@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    [Table("tb_driver_license")]
+    [Table("driver_license")]
     public class DriverLicense : Model
     {
         [PrimaryKey]

@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    [Table("tb_pix_type")]
+    [Table("pix_type")]
     public class PixType : Model
     {
         [PrimaryKey]

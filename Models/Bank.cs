@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
-    [Table("tb_bank")]
+    [Table("bank")]
     public class Bank : Model
     {
         [BsonId]

@@ -68,7 +68,7 @@ namespace Models
         public string Table() => Table(this);
         public static string Table(Model model)
         {
-            string? tableName = _mappingStrategy.Map(model.GetType().GetCustomAttribute<TableAttribute>()?.Name.Replace("tb_", ""));
+            string? tableName = _mappingStrategy.Map(model.GetType().GetCustomAttribute<TableAttribute>()?.Name);
 
             if (tableName == null)
                 throw new InvalidOperationException($"Classe concreta de '{typeof(Model)}' precisa ter 'TableAttribute'");

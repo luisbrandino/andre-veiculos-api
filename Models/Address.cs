@@ -1,6 +1,8 @@
-﻿namespace Models
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace Models
 {
-    [Table("tb_address")]
+    [Table("address")]
     public class Address : Model
     {
         [PrimaryKey]

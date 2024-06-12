@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_car")]
+    [Table("car")]
     public class Car : Model
     {
         [PrimaryKey]

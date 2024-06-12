@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_card")]
+    [Table("card")]
     public class Card : Model
     {
         [PrimaryKey]

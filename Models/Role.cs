@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_role")]
+    [Table("role")]
     public class Role : Model
     {
         [PrimaryKey]

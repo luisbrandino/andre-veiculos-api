@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_pix")]
+    [Table("pix")]
     public class Pix : Model
     {
         [PrimaryKey]

@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_category")]
+    [Table("category")]
     public class Category : Model
     {
         [PrimaryKey]

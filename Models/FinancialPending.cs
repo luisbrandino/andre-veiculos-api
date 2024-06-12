@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    [Table("tb_financial_pending")]
+    [Table("financial_pending")]
     public class FinancialPending : Model
     {
         [PrimaryKey]

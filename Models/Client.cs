@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    [Table("tb_client")]
+    [Table("client")]
     public class Client : Person
     {
         public decimal Income { get; set; }

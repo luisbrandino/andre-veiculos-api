@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    [Table("tb_driver")]
+    [Table("driver")]
     public class Driver : Person
     {
         [Column("license_id")]

@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_payment")]
+    [Table("payment")]
     public class Payment : Model
     {
         [Key]

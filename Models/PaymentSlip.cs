@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_payment_slip")]
+    [Table("payment_slip")]
     public class PaymentSlip : Model
     {
         [PrimaryKey]

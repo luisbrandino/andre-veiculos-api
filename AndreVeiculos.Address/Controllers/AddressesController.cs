@@ -70,7 +70,7 @@ namespace AndreVeiculos.Address.Controllers
                 Complement = addressDTO.Complement, 
             };
 
-            await repository.Insert(address);
+            address = await repository.Insert(address);
             mongoRepository.Insert(address);
 
             return address;

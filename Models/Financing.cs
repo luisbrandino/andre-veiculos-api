@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    [Table("tb_financing")]
+    [Table("financing")]
     public class Financing : Model
     {
         [Key]

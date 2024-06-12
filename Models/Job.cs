@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    [Table("tb_job")]
+    [Table("job")]
     public class Job : Model
     {
         [PrimaryKey]

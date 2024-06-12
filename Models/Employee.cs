@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    [Table("tb_employee")]
+    [Table("employee")]
     public class Employee : Person
     {
         [Column("role_id")]

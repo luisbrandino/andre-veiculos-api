@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_insurance")]
+    [Table("insurance")]
     public class Insurance : Model
     {
         [PrimaryKey]

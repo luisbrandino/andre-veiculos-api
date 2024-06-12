@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    [Table("tb_relative")]
+    [Table("relative")]
     public class Relative : Person
     {
         [Column("client_identification_number")]

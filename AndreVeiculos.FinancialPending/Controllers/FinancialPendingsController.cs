@@ -26,40 +26,44 @@ namespace AndreVeiculos.FinancialPending.Controllers
         public async Task<ActionResult<IEnumerable<Models.FinancialPending>>> GetFinancialPending(string repositoryType)
         {
             var repository = GetRepository<Models.FinancialPending>(repositoryType);
+            var addressRepository = GetRepository<Models.Address>(repositoryType);
 
-            var financialPending = await repository.FindWith(client => client.Address);
+            var financialPendings = await repository.FindWith(financialPending => financialPending.Client);
 
-            return ().ToList();
+            foreach (var financialPending in financialPendings)
+                financialPending.Client.Address = await addressRepository.Find(financialPending.Client.Address.Id);
+
+            return financialPendings.ToList();
         }
 
         [HttpGet("{repositoryType}/{identificationNumber}")]
         public async Task<ActionResult<Models.FinancialPending>> GetFinancialPending(string repositoryType, string identificationNumber)
         {
             var repository = GetRepository<Models.FinancialPending>(repositoryType);
-            var client = await repository.FindWith(identificationNumber, client => client.Address);
+            var addressRepository = GetRepository<Models.Address>(repositoryType);
 
-            if (client == null)
-                return NotFound();
+            var financialPending = await repository.FindWith(identificationNumber, financialPending => financialPending.Client);
+            financialPending.Client.Address = await addressRepository.Find(financialPending.Client.Address.Id);
 
-            return client;
+            return financialPending;
         }
 
         [HttpPost("{repositoryType}")]
-        public async Task<ActionResult<Models.FinancialPending>> PostFinancialPending(string repositoryType, Models.FinancialPending client)
+        public async Task<ActionResult<Models.FinancialPending>> PostFinancialPending(string repositoryType, Models.FinancialPending financialPending)
         {
             var repository = GetRepository<Models.FinancialPending>(repositoryType);
-            var addressRepository = GetRepository<Models.Address>(repositoryType);
+            var clientRepository = GetRepository<Models.Client>(repositoryType);
 
-            var address = await addressRepository.Find(client.Address.Id);
+            var client = await clientRepository.Find(financialPending.Client.IdentificationNumber);
 
-            if (address == null)
-                return BadRequest("Endereço não cadastrado");
+            if (client == null)
+                return BadRequest("Cliente não cadastrado");
 
-            client.Address = address;
+            financialPending.Client = client;
 
-            await repository.Insert(client);
+            await repository.Insert(financialPending);
 
-            return client;
+            return financialPending;
         }
 
         public IBaseRepository<T> GetRepository<T>(string type) where T : Model, new()

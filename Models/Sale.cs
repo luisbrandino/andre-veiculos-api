@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    [Table("tb_sale")]
+    [Table("sale")]
     public class Sale : Model
     {
         [PrimaryKey]
