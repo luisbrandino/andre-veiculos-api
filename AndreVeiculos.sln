@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndreVeiculos.Relative", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndreVeiculos.FinancialPending", "AndreVeiculos.FinancialPending\AndreVeiculos.FinancialPending.csproj", "{5223C95C-C037-42BF-BA21-38A022A658D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndreVeiculos.TermsOfUse", "AndreVeiculos.TermsOfUse\AndreVeiculos.TermsOfUse.csproj", "{55666290-9FEF-475D-84EC-41697075272E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{5223C95C-C037-42BF-BA21-38A022A658D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5223C95C-C037-42BF-BA21-38A022A658D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5223C95C-C037-42BF-BA21-38A022A658D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55666290-9FEF-475D-84EC-41697075272E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55666290-9FEF-475D-84EC-41697075272E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55666290-9FEF-475D-84EC-41697075272E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55666290-9FEF-475D-84EC-41697075272E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
