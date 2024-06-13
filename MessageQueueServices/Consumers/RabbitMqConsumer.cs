@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MessageQueueServices.Consumers
 {
-    public class RabbitMqConsumer : IConsumer<RabbitMqMessage>
+    public class RabbitMqConsumer : IConsumer
     {
         private readonly RabbitMqSettings _settings;
         private readonly ConnectionFactory _factory;
@@ -23,7 +23,7 @@ namespace MessageQueueServices.Consumers
             };
         }
 
-        public async Task ConsumeAsync(Func<RabbitMqMessage, Task> onReceive)
+        public async Task ConsumeAsync(Func<IMessage, Task> onReceive)
         {
             var connection = _factory.CreateConnection();
             var channel = connection.CreateModel();

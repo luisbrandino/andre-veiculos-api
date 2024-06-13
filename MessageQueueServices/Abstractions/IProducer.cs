@@ -1,7 +1,7 @@
 ﻿namespace MessageQueueServices.Abstractions
 {
-    public interface IProducer<T> where T : IMessage
+    public interface IProducer
     {
-        Task ProduceAsync(T message);
+        Task ProduceAsync(IMessage message);
     }
 }

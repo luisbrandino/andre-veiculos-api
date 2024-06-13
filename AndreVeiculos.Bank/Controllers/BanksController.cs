@@ -54,7 +54,7 @@ namespace AndreVeiculos.Bank.Controllers
 
             message.Content = bank;
 
-            await _producer.ProduceAsync((RabbitMqMessage) message);
+            await _producer.ProduceAsync(message);
 
             return bank;
         }

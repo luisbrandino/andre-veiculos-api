@@ -17,6 +17,11 @@ namespace MongoServices
             if(bank != null)
                 _banks.InsertOne(bank);
         }
+        public async Task InsertAsync(Bank bank)
+        {
+            if (bank != null)
+                await _banks.InsertOneAsync(bank);
+        }
         public Bank Find(string cnpj)
         {
             return _banks.Find(b => b.Cnpj == cnpj).FirstOrDefault();

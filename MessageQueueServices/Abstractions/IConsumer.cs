@@ -1,7 +1,7 @@
 ﻿namespace MessageQueueServices.Abstractions
 {
-    public interface IConsumer<T> where T : IMessage
+    public interface IConsumer
     {
-        Task ConsumeAsync(Func<T, Task> onReceive);
+        Task ConsumeAsync(Func<IMessage, Task> onReceive);
     }
 }

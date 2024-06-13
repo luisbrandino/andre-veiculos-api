@@ -32,16 +32,15 @@ builder.Services.AddSingleton<BankService>();
 builder.Services.AddSingleton(_ => new RabbitMqSettings() { QueueName = "message2" });
 
 builder.Services.AddTransient<IMessage, RabbitMqMessage>();
-builder.Services.AddTransient<IProducer<RabbitMqMessage>, RabbitMqProducer>();
-builder.Services.AddTransient<IConsumer<RabbitMqMessage>, RabbitMqConsumer>();
+builder.Services.AddTransient<IProducer, RabbitMqProducer>();
+builder.Services.AddTransient<IConsumer, RabbitMqConsumer>();
 
 builder.Services.AddTransient<RabbitMqProducer>();
 builder.Services.AddTransient<RabbitMqConsumer>();
 
 builder.Services.AddTransient<IBaseRepository<Bank>>(_ => new DapperRepository<Bank>());
 
-builder.Services.AddHostedService<BankInsertMessageProcessor<RabbitMqMessage>>();
-
+builder.Services.AddHostedService<BankInsertMessageProcessor>();
 
 var app = builder.Build();
 

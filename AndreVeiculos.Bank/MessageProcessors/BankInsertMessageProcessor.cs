@@ -6,28 +6,25 @@ using Repositories;
 
 namespace AndreVeiculos.Bank.MessageProcessors
 {
-    public class BankInsertMessageProcessor<T> : MessageProcessor<T> where T : IMessage
+    public class BankInsertMessageProcessor : MessageProcessor
     {
         private readonly BankService _service;
         private readonly IBaseRepository<Models.Bank> _repository;
 
-        public BankInsertMessageProcessor(IConsumer<T> consumer, BankService service, IBaseRepository<Models.Bank> repository) : base(consumer)
+        public BankInsertMessageProcessor(IConsumer consumer, BankService service, IBaseRepository<Models.Bank> repository) : base(consumer)
         {
             _service = service;
             _repository = repository;
         }
 
-        public override Task Process(T message)
+        public override async Task Process(IMessage message)
         {
             var bank = JsonConvert.DeserializeObject<Models.Bank>(message.Content.ToString());
 
             if (bank == null)
-                return Task.CompletedTask;
+                return;
 
-            _service.Insert(bank);
-            _repository.Insert(bank);
-
-            return Task.CompletedTask;
+            await Task.WhenAll(_repository.Insert(bank), _service.InsertAsync(bank));
         }
     }
 }

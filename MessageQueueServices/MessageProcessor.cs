@@ -3,18 +3,18 @@ using Microsoft.Extensions.Hosting;
 
 namespace MessageQueueServices
 {
-    public abstract class MessageProcessor<T> : BackgroundService where T : IMessage
+    public abstract class MessageProcessor : BackgroundService
     {
-        private readonly IConsumer<T> _consumer;
+        private readonly IConsumer _consumer;
 
-        protected MessageProcessor(IConsumer<T> consumer)
+        protected MessageProcessor(IConsumer consumer)
         {
             _consumer = consumer;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await _consumer.ConsumeAsync(async (T message) => {
+            await _consumer.ConsumeAsync(async (IMessage message) => {
                 if (stoppingToken.IsCancellationRequested)
                     return;
 
@@ -22,6 +22,6 @@ namespace MessageQueueServices
             });
         }
 
-        public abstract Task Process(T message);
+        public abstract Task Process(IMessage message);
     }
 }

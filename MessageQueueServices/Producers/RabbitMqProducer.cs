@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MessageQueueServices.Producers
 {
-    public class RabbitMqProducer : IProducer<RabbitMqMessage>
+    public class RabbitMqProducer : IProducer
     {
         private readonly RabbitMqSettings _settings;
         private readonly ConnectionFactory _factory;
@@ -21,8 +21,13 @@ namespace MessageQueueServices.Producers
             };
         }
 
-        public async Task ProduceAsync(RabbitMqMessage message)
+        public async Task ProduceAsync(IMessage message)
         {
+            message = (RabbitMqMessage) message;
+
+            if (message == null)
+                return;
+
             using (var connection = _factory.CreateConnection())
             {
                 using (var channel = connection.CreateModel())
@@ -33,7 +38,7 @@ namespace MessageQueueServices.Producers
                         exclusive: false,
                         autoDelete: false,
                         arguments: null
-                        );
+                    );
 
                     var stringfied = JsonConvert.SerializeObject(message);
                     var data = Encoding.UTF8.GetBytes(stringfied);
