@@ -9,6 +9,9 @@ using AndreVeiculos.Bank.Data;
 using Models;
 using Repositories;
 using MongoServices;
+using MessageQueueServices.Producers;
+using MessageQueueServices.Messages;
+using MessageQueueServices.Abstractions;
 
 namespace AndreVeiculos.Bank.Controllers
 {
@@ -18,11 +21,13 @@ namespace AndreVeiculos.Bank.Controllers
     {
         private readonly AndreVeiculosBankContext _context;
         private readonly BankService _service;
+        private readonly RabbitMqProducer _producer;
 
-        public BanksController(AndreVeiculosBankContext context, BankService service)
+        public BanksController(AndreVeiculosBankContext context, BankService service, RabbitMqProducer producer)
         {
             _context = context;
             _service = service;
+            _producer = producer;
         }
 
         [HttpGet]
@@ -45,7 +50,11 @@ namespace AndreVeiculos.Bank.Controllers
         [HttpPost]
         public async Task<ActionResult<Models.Bank>> PostBank(Models.Bank bank)
         {
-            _service.Insert(bank);
+            var message = HttpContext.RequestServices.GetRequiredService<IMessage>();
+
+            message.Content = bank;
+
+            await _producer.ProduceAsync((RabbitMqMessage) message);
 
             return bank;
         }

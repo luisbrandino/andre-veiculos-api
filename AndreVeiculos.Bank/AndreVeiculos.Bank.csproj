@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MessageQueueServices\MessageQueueServices.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\MongoServices\MongoServices.csproj" />
     <ProjectReference Include="..\Repositories\Repositories.csproj" />
