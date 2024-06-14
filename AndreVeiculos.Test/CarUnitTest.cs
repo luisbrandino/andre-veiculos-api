@@ -41,7 +41,7 @@ namespace AndreVeiculos.Test
             {
                 CarsController controller = new(context);
 
-                var cars = controller.GetCar("ef").Result.Value;
+                var cars = controller.GetCar("ado").Result.Value;
 
                 Assert.Equal(5, cars.Count());
             }
@@ -56,10 +56,9 @@ namespace AndreVeiculos.Test
             {
                 CarsController controller = new(context);
 
-                var licensePlate = controller.GetCar("ef").Result.Value.First().LicensePlate;
+                var licensePlate = controller.GetCar("ado").Result.Value.First().LicensePlate;
 
-                var car = controller.GetCar("ef", licensePlate).Result.Value;
-
+                var car = controller.GetCar("ado", licensePlate).Result.Value;
 
                 Assert.Equal(licensePlate, car.LicensePlate);
             }
@@ -83,7 +82,7 @@ namespace AndreVeiculos.Test
                     Sold = true
                 };
 
-                var carReturnedFromController = controller.PostCar("ef", car).Result.Value;
+                var carReturnedFromController = controller.PostCar("ado", car).Result.Value;
 
                 Assert.Equal(carReturnedFromController.Name, car.Name);
                 Assert.True(carReturnedFromController.Sold);

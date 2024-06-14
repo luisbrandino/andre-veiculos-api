@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Mongo2Go;
+using Repositories;
 
 namespace AndreVeiculos.Test
 {
@@ -47,7 +48,7 @@ namespace AndreVeiculos.Test
             {
                 AddressesController controller = new(context);
 
-                IEnumerable<Models.Address> addresses = controller.GetAddress("ef").Result.Value;
+                IEnumerable<Models.Address> addresses = controller.GetAddress("ado").Result.Value;
 
                 Assert.Equal(5, addresses.Count());
             }
@@ -62,7 +63,7 @@ namespace AndreVeiculos.Test
             {
                 AddressesController controller = new(context);
 
-                var address = controller.GetAddress("ef", 1).Result.Value;
+                var address = controller.GetAddress("ado", 1).Result.Value;
 
                 Assert.Equal(1, address.Id);
             }
@@ -108,7 +109,7 @@ namespace AndreVeiculos.Test
                     Number = 2
                 };
 
-                var addressReturnedFromController = controller.PostAddress("ef", address).Result.Value;
+                var addressReturnedFromController = controller.PostAddress("ado", address).Result.Value;
 
                 Assert.Equal(addressReturnedFromController.PostalCode, address.PostalCode);
             }

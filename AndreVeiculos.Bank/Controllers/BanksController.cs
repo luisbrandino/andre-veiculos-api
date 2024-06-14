@@ -6,11 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AndreVeiculos.Bank.Data;
-using Models;
-using Repositories;
 using MongoServices;
-using MessageQueueServices.Producers;
-using MessageQueueServices.Messages;
 using MessageQueueServices.Abstractions;
 
 namespace AndreVeiculos.Bank.Controllers
@@ -21,9 +17,9 @@ namespace AndreVeiculos.Bank.Controllers
     {
         private readonly AndreVeiculosBankContext _context;
         private readonly BankService _service;
-        private readonly RabbitMqProducer _producer;
+        private readonly IProducer _producer;
 
-        public BanksController(AndreVeiculosBankContext context, BankService service, RabbitMqProducer producer)
+        public BanksController(AndreVeiculosBankContext context, BankService service, IProducer producer)
         {
             _context = context;
             _service = service;

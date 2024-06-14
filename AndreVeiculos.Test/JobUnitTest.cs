@@ -36,7 +36,7 @@ namespace AndreVeiculos.Test
             {
                 JobsController controller = new(context);
 
-                var jobs = controller.GetJob("ef").Result.Value;
+                var jobs = controller.GetJob("ado").Result.Value;
 
                 Assert.Equal(5, jobs.Count());
             }
@@ -51,7 +51,7 @@ namespace AndreVeiculos.Test
             {
                 JobsController controller = new(context);
 
-                var job = controller.GetJob("ef", 1).Result.Value;
+                var job = controller.GetJob("ado", 1).Result.Value;
 
                 Assert.Equal(1, job.Id);
             }
@@ -71,7 +71,7 @@ namespace AndreVeiculos.Test
                     Description = "Teste"
                 };
 
-                var jobReturnedFromController = controller.PostJob("ef", job).Result.Value;
+                var jobReturnedFromController = controller.PostJob("ado", job).Result.Value;
 
                 Assert.Equal(jobReturnedFromController.Description, job.Description);
             }

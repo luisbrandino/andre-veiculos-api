@@ -14,7 +14,5 @@ namespace Repositories
         public Task<IEnumerable<T>> FindWith(params Expression<Func<T, Model>>[] includes);
 
         public Task<T?> FindWith(object id, params Expression<Func<T, Model>>[] includes);
-
-        public bool Exists(object id);
     }
 }
