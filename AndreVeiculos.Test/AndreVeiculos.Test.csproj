@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -23,6 +23,7 @@
     <ProjectReference Include="..\AndreVeiculos.Address\AndreVeiculos.Address.csproj" />
     <ProjectReference Include="..\AndreVeiculos.Car\AndreVeiculos.Car.csproj" />
     <ProjectReference Include="..\AndreVeiculos.Job\AndreVeiculos.Job.csproj" />
+    <ProjectReference Include="..\Endpoints\Endpoints.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 

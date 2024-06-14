@@ -1,5 +1,7 @@
 ﻿using MessageQueueServices;
 using MessageQueueServices.Abstractions;
+using Microsoft.Extensions.Hosting;
+using Models;
 using MongoServices;
 using Newtonsoft.Json;
 using Repositories;
